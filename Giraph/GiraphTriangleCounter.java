@@ -12,7 +12,6 @@ import org.apache.hadoop.io.NullWritable;
 
 /**
  * Calculates triangles using Giraph assuming triangle ABC
- * @author peter
  */
 public class GiraphTriangleCounter extends BasicComputation<
         IntWritable, IntWritable, NullWritable, IntWritable> {
@@ -24,7 +23,7 @@ public class GiraphTriangleCounter extends BasicComputation<
             Vertex<IntWritable, IntWritable, NullWritable> vertex,
             Iterable<IntWritable> recievedMessages) throws IOException {
 
-    	LOG.info("Started computation for vertex: " + vertex.getId().get());
+    	LOG.info("Starting computation for vertex: " + vertex.getId().get());
     	
         long superstep = getSuperstep();
         IntWritable vertexId = vertex.getId();
