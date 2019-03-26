@@ -27,19 +27,31 @@ public class GiraphTriangleCounter extends BasicComputation<
     	
         long superstep = getSuperstep();
         IntWritable vertexId = vertex.getId();
-        
+        /**
+         * All vertices send their IDs to their neighbors which have a greater ID
+         * (messages travel on edges of type A B)
+         */
         if (superstep == 0) {
         	sendEdgeABMessage(vertex.getEdges(), vertexId);
         }
-
+        /**
+         * All vertices forward the messages they received to their neighbors which have even a greater ID
+         * (messages travel on edges of type B C)
+         */
         if (superstep == 1) {
         	forwardBCMessage(vertex.getEdges(), recievedMessages, vertexId);
         }
-
+        /**
+         * All vertices forward the messages they received to all their neighbors
+         * (in the hope of discovering C A edges)
+         */
         if (superstep == 2) {
         	forwardCAMessage(vertex.getEdges(), recievedMessages);
         }
-
+        /**
+         * All vertices count how many messages received in the previous step contain their ID
+         * (making them the vertices with the smallest ID in that triangle)
+         */
         if (superstep == 3) {
         	countIncommingMessages(vertex, recievedMessages);
         }
