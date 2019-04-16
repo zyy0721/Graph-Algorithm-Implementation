@@ -1,0 +1,8 @@
+.decl edge(x:number, y:number)
+.input edge
+
+.decl sg(x:number, y:number)
+.output sg
+
+sg(x, y) :- edge(p, x), edge(p, y),x != y.
+sg(x, y) :- edge(a, x), sg(a, b), edge(b, y), x != y.
