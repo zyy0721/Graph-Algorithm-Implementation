@@ -1,0 +1,40 @@
+date
+souffle -F. -D. -oexample treeTCl.dl
+./example
+date
+echo "Finished!"
+rm -rf example example.cpp path.csv
+date
+souffle -F. -D. -oexample googleTCo.dl
+./example
+date
+echo "Finished!"
+rm -rf example example.cpp counting.csv
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+date
+souffle -F. -D. -oexample googleTCo.dl
+./example
+date
+echo "Finished!"
+rm -rf example example.cpp counting.csv
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
