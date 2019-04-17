@@ -1,5 +1,6 @@
+// Types created by the user
 .number_type nodes
-
+// Declared Facts
 .decl node(n:nodes)
 .input node
 .decl num_nodes(n:nodes)
@@ -9,12 +10,12 @@
 .decl path_dis(src:nodes, dest:nodes, dist:number, rnd:number)
 
 .decl min_path(src:nodes, dest:nodes, dist:number)
-
+// The Facts that will outputted at the end of the query
 .output min_path(IO=stdout)
-
+// find all of the distances between two nodes
 path_dis(n, n, 0, 0) :- node(n).
 path_dis(src, dest, dist1 + dist2, rnd + 1) :- path_dis(src, n, dist1,
 rnd), googleedgesp(n, dest, dist2), num_nodes(t), rnd<t.
-
+// calculate the minimum path
 min_path(src, dest, d) :- path_dis(src, dest, _,
 _), d = min dist : path_dis(src, dest, dist, _).
