@@ -1,0 +1,25 @@
+.decl edge(x:number, y:number, d:number)
+.input edge
+
+.decl path(t:number, d:number)
+.decl minpath(c:number)
+.output minpath
+
+path(t,d) :- t=1, d=0.
+path(t,d) :- path(s,d1), edge(s,t,d2), d=d1+d2.
+minpath(c) :- c=min d: {path(6,d)}
+
+
+minpath(t1,d) :- d=min d3 : {path(t1,d3)}.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.decl googleedgesp(x:number, y:number, d:number)
+.input googleedgesp
+
+.decl path(t:number, d:number)
+.decl minpath(c:number)
+.output minpath
+
+path(t,d) :- t=1, d=0.
+path(t,d) :- path(s,d1), googleedgesp(s,t,d2), d=d1+d2.
+minpath(c) :- c=min d: {path(276233,d)}.

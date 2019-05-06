@@ -13,15 +13,27 @@ rm -rf example example.cpp counting.csv
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 date
-souffle -F. -D. -oexample googleTCo.dl
+souffle -F. -D. -oexample citTCo.dl
 ./example
 date
 echo "Finished!"
 rm -rf example example.cpp counting.csv
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+date
+souffle -F. -D. -oexample ljTCo.dl
+./example
+date
+echo "Finished!"
+rm -rf example example.cpp counting.csv
 
-
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+date
+souffle -F. -D. -oexample friTCo.dl
+./example
+date
+echo "Finished!"
+rm -rf example example.cpp counting.csv
 
 
 

@@ -1,0 +1,76 @@
+.decl edge(x:number, y:number)
+.input edge
+
+.decl cc3(x:number, y:number)
+.decl cc2(x:number, y:number)
+.decl counting(x:number)
+.output counting
+
+cc3(x,x) :- edge(x,_).
+cc3(y,v) :- cc3(x,v), edge(x,y).
+cc2(x,y) :- cc3(x,y).
+counting(x) :- x = count:{cc2(_,x)}.
+
+// Types created by the user
+.number_type nodes
+// Declared Facts
+.decl node(n:nodes)
+.decl num_nodes(n:nodes)
+.decl edge(n:nodes, m:nodes, wt:number)
+.decl path_dis(src:nodes, dest:nodes, dist:number, rnd:number)
+
+.decl min_path(src:nodes, dest:nodes, dist:number)
+// The Facts that will outputted at the end of the query
+.output min_path(IO=stdout)
+// find all of the distances between two nodes
+path_dis(n, n, 0, 0) :- node(n).
+path_dis(src, dest, dist1 + dist2, rnd + 1) :- path_dis(src, n, dist1,
+rnd), edge(n, dest, dist2), num_nodes(t), rnd<t.
+// calculate the minimum path
+min_path(src, dest, d) :- path_dis(src, dest, _,
+_), d = min dist : path_dis(src, dest, dist, _).
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.number_type nodes
+
+.decl node(n:nodes)
+.input node
+.decl num_nodes(n:nodes)
+.input num_nodes
+.decl googleedgesp(n:nodes, m:nodes, wt:number)
+.input googleedgesp
+.decl path_dis(src:nodes, dest:nodes, dist:number, rnd:number)
+
+.decl min_path(src:nodes, dest:nodes, dist:number)
+
+.output min_path(IO=stdout)
+
+path_dis(n, n, 0, 0) :- node(n).
+path_dis(src, dest, dist1 + dist2, rnd + 1) :- path_dis(src, n, dist1,
+rnd), googleedgesp(n, dest, dist2), num_nodes(t), rnd<t.
+
+min_path(src, dest, d) :- path_dis(src, dest, _,
+_), d = min dist : path_dis(src, dest, dist, _).
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.number_type nodes
+
+.decl node(n:nodes)
+.input node
+.decl num_nodes(n:nodes)
+.input num_nodes
+.decl wikiedgesp(n:nodes, m:nodes, wt:number)
+.input wikiedgesp
+.decl path_dis(src:nodes, dest:nodes, dist:number, rnd:number)
+
+.decl min_path(src:nodes, dest:nodes, dist:number)
+
+.output min_path(IO=stdout)
+
+path_dis(n, n, 0, 0) :- node(n).
+path_dis(src, dest, dist1 + dist2, rnd + 1) :- path_dis(src, n, dist1,
+rnd), wikiedgesp(n, dest, dist2), num_nodes(t), rnd<t.
+
+min_path(src, dest, d) :- path_dis(src, dest, _,
+_), d = min dist : path_dis(src, dest, dist, _).
