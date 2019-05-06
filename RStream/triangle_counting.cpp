@@ -35,12 +35,6 @@ struct ROutUpdate_TriC : BaseUpdate {
 
 };
 
-inline std::ostream & operator<<(std::ostream & strm, const ROutUpdate_TriC& update){
-	strm << "(" << update.target << ", " << update.src1 << ", " << update.src2 << ")";
-	return strm;
-}
-
-
 RInUpdate_TriC* generate_one_update(Edge * e)
 {
 	RInUpdate_TriC* update = new RInUpdate_TriC(e->target, e->src);
