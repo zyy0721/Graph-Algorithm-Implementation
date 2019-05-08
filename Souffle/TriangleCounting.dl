@@ -8,13 +8,3 @@
 triangles(x, y, z) :- edge(x, y), x < y,edge(y, z),y < z,edge(z, x).
 counting(x) :- x = count:{triangles(_,_,_)}.
 
-
-.decl wikiedge(x:number, y:number)
-.input wikiedge
-
-.decl triangles(x:number, y:number,z:number)
-.decl counting(x:number)
-.output counting
-
-triangles(x, y, z) :- wikiedge(x, y), x < y,wikiedge(y, z),y < z,wikiedge(z, x).
-counting(x) :- x = count:{triangles(_,_,_)}.
